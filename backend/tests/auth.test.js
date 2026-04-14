@@ -16,7 +16,7 @@ describe('Auth API Tests', () => {
         name: 'Test User',
         email: `test${Date.now()}@gmail.com`,
         password: 'test1234',
-        role: 'user'
+        role: 'customer'
       });
     expect(res.statusCode).toBe(201);
     expect(res.body.message).toBe('User registered successfully!');
