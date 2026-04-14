@@ -3,15 +3,20 @@ const router = express.Router();
 const Order = require('../models/Order');
 
 // Place new order
+
 router.post('/', async (req, res) => {
   try {
+    console.log("🔥 ORDER API HIT");
+    console.log("BODY:", req.body);
+
     const order = await Order.create(req.body);
+
     res.status(201).json({ message: 'Order placed successfully!', order });
   } catch (error) {
+    console.error("❌ ERROR:", error);
     res.status(500).json({ message: 'Server error', error });
   }
 });
-
 // Get all orders (admin)
 router.get('/', async (req, res) => {
   try {
