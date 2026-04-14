@@ -19,7 +19,7 @@ export default function Login() {
     try {
       const res = await axios.post(`${API}/api/auth/login`, form)
       localStorage.setItem('token', res.data.token)
-      localStorage.setItem('user', JSON.stringify(res.data.user))
+      localStorage.setItem('user', JSON.stringify(res.data.user || { name: 'User' }))
       navigate('/restaurants')
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed')
