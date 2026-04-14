@@ -5,7 +5,7 @@ const Restaurant = require('../models/Restaurant');
 // Get all restaurants
 router.get('/', async (req, res) => {
   try {
-    const restaurants = await Restaurant.find({ isActive: true });
+    const restaurants = await Restaurant.find(); // ✅ FIXED
     res.json(restaurants);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
