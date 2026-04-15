@@ -9,7 +9,21 @@ router.post('/', async (req, res) => {
     console.log("🔥 ORDER API HIT");
     console.log("BODY:", req.body);
 
-    const order = await Order.create(req.body);
+       const { user, restaurant, items, totalAmount } = req.body;
+
+       if (!user || !restaurant || !items || !totalAmount) {
+           return res.status(400).json({
+              message: "Missing required fields",
+              received: req.body
+            });
+         }
+
+        const order = await Order.create({
+    user,
+    restaurant,
+    items,
+    totalAmount
+  });
 
     res.status(201).json({ message: 'Order placed successfully!', order });
   } catch (error) {
