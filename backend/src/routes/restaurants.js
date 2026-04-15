@@ -35,4 +35,25 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Add menu item to restaurant
+router.post('/:id/menu', async (req, res) => {
+  try {
+    const { itemName, price, category, isVeg } = req.body;
+
+    const restaurant = await Restaurant.findById(req.params.id);
+
+    if (!restaurant) {
+      return res.status(404).json({ message: "Restaurant not found" });
+    }
+
+    restaurant.menu.push({ itemName, price, category, isVeg });
+
+    await restaurant.save();
+
+    res.json({ message: "Item added!", restaurant });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+});
 module.exports = router;
