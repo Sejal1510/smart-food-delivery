@@ -36,22 +36,35 @@ export default function Menu() {
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0)
 
   const placeOrder = async () => {
-    setOrdering(true)
-    try {
-      await axios.post(`${API}/api/orders`, {
-        restaurantId,
-        items: cart.map(c => ({ name: c.name, price: c.price, quantity: c.qty })),
-        totalAmount: total
-      }, { headers: { Authorization: `Bearer ${token}` } })
-      setOrderSuccess(true)
-      setCart([])
-      setTimeout(() => setOrderSuccess(false), 3000)
-    } catch (err) {
-      alert('Order failed: ' + (err.response?.data?.message || 'Try again'))
-    } finally {
-      setOrdering(false)
-    }
+  setOrdering(true)
+  try {
+    console.log("USER FROM STORAGE:", localStorage.getItem("user"))
+    const user = JSON.parse(localStorage.getItem("user"))
+
+    await axios.post(`${API}/api/orders`, {
+  user: user._id,
+  restaurant: restaurantId,
+  items: cart.map(c => ({
+    itemName: c.name,
+    price: c.price,
+    quantity: c.qty
+  })),
+  totalAmount: total,
+  deliveryAddress: "Shrigonda, Maharashtra"  // 🔥 ADD THIS
+}, {
+  headers: { Authorization: `Bearer ${token}` }
+})
+
+    setOrderSuccess(true)
+    setCart([])
+    setTimeout(() => setOrderSuccess(false), 3000)
+
+  } catch (err) {
+    alert('Order failed: ' + (err.response?.data?.message || 'Try again'))
+  } finally {
+    setOrdering(false)
   }
+}
 
   if (!restaurant) return <p style={{ textAlign: 'center', padding: '2rem' }}>Loading menu...</p>
 
@@ -126,3 +139,4 @@ const styles = {
   empty: { color: '#aaa', textAlign: 'center', padding: '1rem' },
   successBanner: { background: '#d1fae5', color: '#065f46', padding: '1rem', textAlign: 'center', fontWeight: 'bold', fontSize: '1.1rem' }
 }
+

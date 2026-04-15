@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, Navigate } from 'react-router-dom'
 
 const API = 'https://smart-food-delivery-backend.onrender.com'
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' })
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+const [error, setError] = useState('')
+const [loading, setLoading] = useState(false)
+const [redirectTo, setRedirectTo] = useState(null);
+  
   const navigate = useNavigate()
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
@@ -19,15 +21,25 @@ export default function Login() {
     try {
       const res = await axios.post(`${API}/api/auth/login`, form)
       localStorage.setItem('token', res.data.token)
-      localStorage.setItem('user', JSON.stringify(res.data.user || { name: 'User' }))
-      navigate('/restaurants')
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+      const role = res.data.user.role;
+
+if (role === "customer") {
+  setRedirectTo("/restaurants");
+} else if (role === "restaurant_owner") {
+  setRedirectTo("/owner/dashboard");
+}
+
+      
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed')
     } finally {
       setLoading(false)
     }
   }
-
+if (redirectTo) {
+  return <Navigate to={redirectTo} />;
+}
   return (
     <div style={styles.container}>
       <div style={styles.card}>
