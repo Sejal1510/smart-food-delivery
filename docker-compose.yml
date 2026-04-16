@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://sejal:Sejal%401510@cluster0.tnjrgbl.mongodb.net/smartfooddelivery?appName=Cluster0
+      - JWT_SECRET=smartfooddelivery_secret_key_2024
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173" 
+    depends_on:
+      - backend
+
+      

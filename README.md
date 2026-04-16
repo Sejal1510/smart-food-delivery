@@ -1,177 +1,184 @@
-# 🍔 Smart Food Delivery System
+# 🍔 Smart Food Delivery System (DevOps Project)
 
-## 📌 Project Overview
+##  Project Overview
 
-The Smart Food Delivery System is a full-stack web application built using modern DevOps practices.
-It enables customers to browse restaurants, view menus, and place orders, while allowing administrators (restaurant owners) to manage restaurant menus efficiently.
+The **Smart Food Delivery System** is a full-stack web application designed to simplify online food ordering. It allows customers to browse restaurants and menu items, while restaurant owners can manage their offerings.
 
-This project demonstrates the complete DevOps lifecycle including version control, CI/CD, testing, containerization, and cloud deployment.
-
----
-
-## 🎯 Problem Statement
-
-Traditional food ordering systems lack automation, scalability, and centralized management.
-This project solves that by providing a role-based platform where:
-
-* Customers can easily order food
-* Admins can manage menus dynamically
+This project demonstrates the **complete DevOps lifecycle**, including containerization, continuous integration, testing, and deployment-ready architecture.
 
 ---
 
-## 🚀 Features
+## Problem Statement
 
-### 👤 Customer
+Traditional food ordering systems often face:
 
-* Register and Login
-* Browse restaurants
-* View menu items
-* Add items to cart
-* Place orders
+* Complex setup and dependency issues
+* Inconsistent environments across different systems
+* Limited scalability and portability
 
-### 🏪 Admin (Restaurant Owner)
+This project addresses these issues using **DevOps practices**, ensuring:
 
-* Login
-* View all restaurants
-* Select a restaurant
-* Add menu items
+* Easy setup and deployment
+* Consistent execution across environments
+* Scalable and portable architecture
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
-### Frontend
+### 🔹 Frontend
 
 * React (Vite)
 * Axios
-* React Router
 
-### Backend
+### 🔹 Backend
 
 * Node.js
 * Express.js
 
-### Database
+### 🔹 Database
 
-* MongoDB Atlas (Cloud)
+* MongoDB Atlas
 
-### DevOps Tools
+### 🔹 DevOps Tools
 
-* GitHub (Version Control)
-* GitHub Actions (CI/CD)
-* Jest (Testing)
-* Docker (Containerization)
-* Render (Cloud Deployment)
+* Docker
+* Docker Compose
+* Git & GitHub
+* SonarCloud (Static Code Analysis)
+* ESLint (Code Quality)
 
 ---
 
-## 🔁 DevOps Lifecycle Implementation
+## ⚙️ Key Features
 
-### 1. Version Control (GitHub)
+* 🔐 User Authentication using JWT
+* 🍽️ Browse Restaurants and Menu Items
+* 🏪 Owner Dashboard for managing data
+* 🌐 Full Stack Integration
+* 📦 Containerized Deployment
+* 🔍 Static Code Analysis using SonarCloud
 
-* Repository maintained with proper commits
-* Branching strategy used (main & develop)
+---
 
-### 2. Continuous Integration (CI)
+##  Containerization (Docker)
 
-* GitHub Actions pipeline triggers on push
-* Automatically installs dependencies and runs tests
+The application is fully containerized using Docker.
 
-### 3. Automated Testing
-
-* Backend tested using Jest
-* Tests executed in CI pipeline
-
-### 4. Containerization (Docker)
+###  Achievements
 
 * Backend containerized using Docker
-* Ensures consistent environment across systems
-
-### 5. Deployment
-
-* Backend deployed on Render
-* MongoDB Atlas used as cloud database
+* Frontend containerized using Docker
+* Multi-container orchestration using Docker Compose
+* Environment variables configured securely
 
 ---
 
-## 🐳 Docker Setup
+##  Running the Application (Docker)
 
-### Build Docker Image
+###  Build and Run
 
 ```bash
-docker build -t smart-food-backend .
+docker-compose up --build
 ```
 
-### Run Container
+---
+
+### 🌐 Access the Application
+
+* Frontend: http://localhost:5173
+* Backend: http://localhost:5000
+
+---
+
+##  Benefits of Using Docker
+
+* Eliminates dependency issues
+* Ensures consistency across systems
+* Enables quick setup and deployment
+* Makes the application portable and scalable
+
+---
+
+##  Continuous Integration & Code Quality
+
+* GitHub used for version control
+* ESLint used for maintaining code quality
+* SonarCloud integrated for:
+
+  * Code analysis
+  * Bug detection
+  * Security vulnerability checks
+
+---
+
+##  Static Code Analysis (SonarCloud)
+
+SonarCloud was used to:
+
+* Detect bugs and vulnerabilities
+* Improve code maintainability
+* Ensure high-quality standards
+
+---
+
+## Deployment Readiness
+
+The project is deployment-ready:
+
+* Docker images can be built and executed on any system
+* Application runs without manual setup using Docker
+* Can be deployed to cloud platforms like AWS or Azure
+
+---
+
+##  Image Distribution (Concept)
+
+Docker enables global sharing of applications:
 
 ```bash
-docker run -p 5000:5000 smart-food-backend
+docker pull <username>/smart-food-backend
+docker run -p 5000:5000 <username>/smart-food-backend
 ```
 
----
-
-## 🚀 Deployment Links
-
-* Backend: https://smart-food-delivery-backend.onrender.com
-* Database: MongoDB Atlas
+This allows anyone to run the application without installing dependencies manually.
 
 ---
 
-## 📂 Project Structure
+##  System Architecture
 
 ```
-smart-food-delivery/
-├── backend/
-│   ├── src/
-│   ├── routes/
-│   ├── models/
-│   └── tests/
-├── frontend/
-│   ├── src/
-│   └── pages/
-├── .github/workflows/
-└── README.md
+Frontend (React - Vite)
+        ↓
+Backend (Node.js + Express)
+        ↓
+MongoDB Atlas (Cloud Database)
 ```
 
----
+Using Docker:
 
-## 🧪 Testing
-
-* Jest is used for backend testing
-* Test cases ensure API reliability
-* Tests run automatically via CI pipeline
+* Each service runs in its own container
+* Managed using Docker Compose
 
 ---
 
-## 🔄 Application Flow
+##  Conclusion
 
-### Customer Flow
+This project successfully demonstrates:
 
-1. User registers and logs in
-2. Views list of restaurants
-3. Selects a restaurant
-4. Adds items to cart
-5. Places an order
+* Implementation of DevOps principles
+* Containerization using Docker
+* Multi-container orchestration
+* Code quality using SonarCloud
+* Deployment-ready architecture
 
-### Admin Flow
-
-1. Admin logs in
-2. Opens Owner Dashboard
-3. Selects a restaurant
-4. Adds new menu items
+The system is fully functional, scalable, and production-ready.
 
 ---
 
-## 🎯 Learning Outcomes
+##  Authors
 
-* Understanding of DevOps lifecycle
-* Hands-on experience with CI/CD pipelines
-* Practical implementation of Docker
-* Cloud deployment using Render
-* Full-stack application development
-
----
-
-## 👩‍💻 Author
-
-Sejal Shinde
+* Sejal Shinde
+* Vanshika Singh
+* Ananya Wate
+* Bhumi Bhatt
