@@ -23,10 +23,12 @@ app.use('/api/orders', require('./routes/orders'));
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected!');
-    app.listen(process.env.PORT || 5000, () => {
-      console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
-    });
+    if (process.env.NODE_ENV !== 'test') {
+  app.listen(process.env.PORT || 5000, () => {
+    console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
+  });
+}
   })
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-module.exports = app;
+  module.exports = app;

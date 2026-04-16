@@ -1,30 +1,32 @@
 # 🍔 Smart Food Delivery System (DevOps Project)
 
+---
+
 ##  Project Overview
 
-The **Smart Food Delivery System** is a full-stack web application designed to simplify online food ordering. It allows customers to browse restaurants and menu items, while restaurant owners can manage their offerings.
+The **Smart Food Delivery System** is a full-stack web application designed to simplify online food ordering. It enables customers to browse restaurants and menus, while allowing restaurant owners to manage their offerings efficiently.
 
-This project demonstrates the **complete DevOps lifecycle**, including containerization, continuous integration, testing, and deployment-ready architecture.
+This project demonstrates the **complete DevOps lifecycle**, including containerization, continuous integration, automated testing, and continuous deployment using modern tools.
 
 ---
 
-## Problem Statement
+##  Problem Statement
 
-Traditional food ordering systems often face:
+Traditional food delivery systems often suffer from:
 
-* Complex setup and dependency issues
-* Inconsistent environments across different systems
-* Limited scalability and portability
+* Complex setup and dependency management
+* Inconsistent execution across different environments
+* Limited scalability and deployment challenges
 
-This project addresses these issues using **DevOps practices**, ensuring:
+This project addresses these issues by implementing **DevOps practices**, ensuring:
 
-* Easy setup and deployment
+* Easy and automated setup
 * Consistent execution across environments
 * Scalable and portable architecture
 
 ---
 
-##  Tech Stack
+## 🧩 Tech Stack
 
 ### 🔹 Frontend
 
@@ -45,6 +47,9 @@ This project addresses these issues using **DevOps practices**, ensuring:
 * Docker
 * Docker Compose
 * Git & GitHub
+* GitHub Actions (CI/CD automation)
+* Docker Hub (Image hosting)
+* Render (Cloud deployment)
 * SonarCloud (Static Code Analysis)
 * ESLint (Code Quality)
 
@@ -53,15 +58,16 @@ This project addresses these issues using **DevOps practices**, ensuring:
 ## ⚙️ Key Features
 
 * 🔐 User Authentication using JWT
-* 🍽️ Browse Restaurants and Menu Items
-* 🏪 Owner Dashboard for managing data
+* 🍽️ Restaurant and Menu Browsing
+* 🏪 Owner Dashboard
 * 🌐 Full Stack Integration
 * 📦 Containerized Deployment
-* 🔍 Static Code Analysis using SonarCloud
+* 🔍 Code Quality Analysis (SonarCloud)
+* 🔁 Automated CI/CD Pipeline
 
 ---
 
-##  Containerization (Docker)
+## 🐳 Containerization (Docker)
 
 The application is fully containerized using Docker.
 
@@ -69,14 +75,14 @@ The application is fully containerized using Docker.
 
 * Backend containerized using Docker
 * Frontend containerized using Docker
-* Multi-container orchestration using Docker Compose
-* Environment variables configured securely
+* Multi-container setup using Docker Compose
+* Environment variables securely managed using `.env`
 
 ---
 
-##  Running the Application (Docker)
+## ▶ Running the Application (Docker)
 
-###  Build and Run
+### 🔧 Build and Run
 
 ```bash
 docker-compose up --build
@@ -84,7 +90,7 @@ docker-compose up --build
 
 ---
 
-### 🌐 Access the Application
+### 🌐 Access
 
 * Frontend: http://localhost:5173
 * Backend: http://localhost:5000
@@ -93,55 +99,80 @@ docker-compose up --build
 
 ##  Benefits of Using Docker
 
-* Eliminates dependency issues
-* Ensures consistency across systems
-* Enables quick setup and deployment
-* Makes the application portable and scalable
+* Eliminates dependency conflicts
+* Ensures consistent environments
+* Enables quick setup and execution
+* Makes the system portable and scalable
 
 ---
 
-##  Continuous Integration & Code Quality
+## 🔁 CI/CD Pipeline
 
-* GitHub used for version control
-* ESLint used for maintaining code quality
-* SonarCloud integrated for:
+The project implements a **complete CI/CD pipeline using GitHub Actions**.
 
-  * Code analysis
-  * Bug detection
-  * Security vulnerability checks
+### 🔹 Continuous Integration (CI)
+
+* Automatically installs dependencies
+* Executes Jest test cases
+* Performs code validation using ESLint
+* Ensures code quality through SonarCloud
+
+### 🔹 Continuous Deployment (CD)
+
+* Builds Docker image automatically
+* Pushes image to Docker Hub
+* Triggers deployment on Render using deploy hooks
+
+###  Workflow
+
+```
+Code Push → GitHub Actions → Testing (Jest) → Docker Build → Docker Hub Push → Render Deployment
+```
+
+This ensures **fully automated build, test, and deployment process**.
+
+---
+
+##  Testing
+
+* Jest used as the testing framework
+* Supertest used for API testing
+* Test cases implemented for authentication module
+* Automated test execution integrated into CI pipeline
 
 ---
 
 ##  Static Code Analysis (SonarCloud)
 
-SonarCloud was used to:
+SonarCloud is used to:
 
 * Detect bugs and vulnerabilities
-* Improve code maintainability
-* Ensure high-quality standards
+* Identify code smells
+* Improve maintainability
+* Ensure secure coding practices
 
 ---
 
-## Deployment Readiness
+##  Deployment
 
-The project is deployment-ready:
+The backend is deployed on **Render**:
 
-* Docker images can be built and executed on any system
-* Application runs without manual setup using Docker
-* Can be deployed to cloud platforms like AWS or Azure
+* Environment variables securely configured
+* Automatic deployment triggered via CI/CD pipeline
+* Application accessible globally
 
 ---
 
-##  Image Distribution (Concept)
+##  Image Distribution
 
-Docker enables global sharing of applications:
+Docker enables global sharing of the application:
 
 ```bash
 docker pull <username>/smart-food-backend
 docker run -p 5000:5000 <username>/smart-food-backend
 ```
 
-This allows anyone to run the application without installing dependencies manually.
+This allows the application to run **without manual setup**.
 
 ---
 
@@ -150,14 +181,14 @@ This allows anyone to run the application without installing dependencies manual
 ```
 Frontend (React - Vite)
         ↓
-Backend (Node.js + Express)
+Backend (Node.js + Express API)
         ↓
 MongoDB Atlas (Cloud Database)
 ```
 
 Using Docker:
 
-* Each service runs in its own container
+* Each service runs in an isolated container
 * Managed using Docker Compose
 
 ---
@@ -166,13 +197,14 @@ Using Docker:
 
 This project successfully demonstrates:
 
-* Implementation of DevOps principles
+* Real-world implementation of DevOps lifecycle
 * Containerization using Docker
 * Multi-container orchestration
-* Code quality using SonarCloud
-* Deployment-ready architecture
+* Automated CI/CD pipeline
+* Code quality and security analysis
+* Cloud deployment
 
-The system is fully functional, scalable, and production-ready.
+The system is **fully functional, scalable, portable, and production-ready**.
 
 ---
 

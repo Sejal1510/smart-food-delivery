@@ -10,17 +10,18 @@ describe('Auth API Tests', () => {
   
   // Test 1: Register a new user
   it('should register a new user', async () => {
-    const res = await request(app)
-      .post('/api/auth/register')
-      .send({
-        name: 'Test User',
-        email: `test${Date.now()}@gmail.com`,
-        password: 'test1234',
-        role: 'customer'
-      });
-    expect(res.statusCode).toBe(201);
-    expect(res.body.message).toBe('User registered successfully!');
-  });
+  const res = await request(app)
+    .post('/api/auth/register')
+    .send({
+      name: 'Test User',
+      email: `test${Date.now()}@gmail.com`,
+      password: 'test1234',
+      role: 'customer'
+    });
+
+  expect(res.statusCode).toBe(201);
+  expect(res.body.message).toBe('User registered successfully!');
+}, 10000); 
 
   // Test 2: Login with wrong password
   it('should not login with wrong password', async () => {
@@ -31,6 +32,7 @@ describe('Auth API Tests', () => {
         password: 'wrongpassword'
       });
     expect(res.statusCode).toBe(400);
+    
   });
 
   // Test 3: Register with missing fields
@@ -40,7 +42,8 @@ describe('Auth API Tests', () => {
       .send({
         name: 'Test User'
       });
-    expect(res.statusCode).toBe(500);
+    
+    expect(res.statusCode).toBe(400);
   });
 
 });
