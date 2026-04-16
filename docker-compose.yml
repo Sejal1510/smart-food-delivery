@@ -5,9 +5,10 @@ services:
     build: ./backend
     ports:
       - "5000:5000"
+    
     environment:
-      - MONGO_URI=mongodb+srv://sejal:Sejal%401510@cluster0.tnjrgbl.mongodb.net/smartfooddelivery?appName=Cluster0
-      - JWT_SECRET=smartfooddelivery_secret_key_2024
+      - MONGO_URI=${MONGO_URI}
+      - JWT_SECRET=${JWT_SECRET}
 
   frontend:
     build: ./frontend
